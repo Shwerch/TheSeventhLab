@@ -19,7 +19,7 @@ int main() {
 		}
 		std::string message;
 		std::vector<int> enteredNumbers;
-        bool canFormtarget;
+		bool canFormtarget;
 		switch (element) {
 		case MainMenu::KOCH_CURVE:
 			drawKochCurve(getValue<int>("Введите n"));
@@ -32,7 +32,8 @@ int main() {
 		case MainMenu::EXPRESSION_SOLVER:
 			enteredNumbers = getVector<int>("Введите числа через пробел");
 			canFormtarget = expressionCanFormTarget(enteredNumbers, getValue<int>("Введите число S"));
-            printString("Числа" + std::string(((canFormtarget) ? " " : " не ")) + "могут быть соединены с помощью + и * для получения числа S");
+			printString("Числа" + std::string(((canFormtarget) ? " " : " не ")) +
+						"могут быть соединены с помощью + и * для получения числа S");
 			break;
 		case MainMenu::EXIT:
 			return 0;
