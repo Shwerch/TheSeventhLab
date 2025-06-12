@@ -1,4 +1,4 @@
-#include "../include/main_menu.hpp"
+#include "main_menu.hpp"
 
 #include <iostream>
 #include <stdexcept>

@@ -1,4 +1,4 @@
-#include "../../include/modules/expression_solver.hpp"
+#include "modules/expression_solver.hpp"
 
 bool dfs_all(const std::vector<int>& nums, size_t index, int current_value, int target) {
 	if (index == nums.size()) {

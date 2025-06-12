@@ -1,4 +1,4 @@
-#include "../../include/modules/decoder.hpp"
+#include "modules/decoder.hpp"
 
 #include <stack>
 #include <cctype>

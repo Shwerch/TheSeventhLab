@@ -1,4 +1,4 @@
-#include "../../include/modules/koch_curve.hpp"
+#include "modules/koch_curve.hpp"
 
 #include <GL/freeglut.h>
 

@@ -1,10 +1,10 @@
-#include "../include/input.hpp"
-#include "../include/main_menu.hpp"
-#include "../include/output.hpp"
+#include "input.hpp"
+#include "main_menu.hpp"
+#include "output.hpp"
 
-#include "../include/modules/decoder.hpp"
-#include "../include/modules/expression_solver.hpp"
-#include "../include/modules/koch_curve.hpp"
+#include "modules/decoder.hpp"
+#include "modules/expression_solver.hpp"
+#include "modules/koch_curve.hpp"
 #include <vector>
 
 int main() {
