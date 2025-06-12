@@ -13,7 +13,7 @@ $(PROG): $(OBJECT_FILES)
 	@mkdir -p bin
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJECT_FILES) -o bin/$(PROG)
 
-build/%.o: src/%.cpp $(wildcard include/*.$(HEADER_FILE))
+build/%.o: src/%.cpp
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
