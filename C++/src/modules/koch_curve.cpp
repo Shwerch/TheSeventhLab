@@ -1,8 +1,8 @@
-#include "modules/koch_curve.hpp"
+#include "../../include/modules/koch_curve.hpp"
 
 #include <GL/freeglut.h>
-
 #include <GL/freeglut_std.h>
+
 #include <cmath>
 
 static int iterations = 0;
