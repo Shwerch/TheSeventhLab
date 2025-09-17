@@ -14,14 +14,20 @@ void drawSegment(double x1, double y1, double x2, double y2, int depth) {
 		return;
 	}
 
+	// (dx,dy) — вектор, равный треть от полного вектора (x2-x1,y2-y1).
 	double dx = (x2 - x1) / 3.0;
 	double dy = (y2 - y1) / 3.0;
 
+	// (x3,y3) — точка на 1/3 длины от начала (первый разрез)
+	// (x5,y5) — точка на 2/3 (второй разрез)
 	double x3 = x1 + dx;
 	double y3 = y1 + dy;
 	double x5 = x2 - dx;
 	double y5 = y2 - dy;
 
+	// Формула поворота 2D-вектора на угол pi/3
+	// Здесь мы берём вектор (dx,dy) (то есть единичный «шаг» в сторону от (x1,y1) к (x2,y2)) и
+	// поворочиваем его на 60 градусов (pi/3 радиан).
 	double px = x3 + (dx * std::cos(M_PI / 3) - dy * std::sin(M_PI / 3));
 	double py = y3 + (dx * std::sin(M_PI / 3) + dy * std::cos(M_PI / 3));
 

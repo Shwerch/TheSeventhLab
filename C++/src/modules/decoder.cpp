@@ -1,35 +1,45 @@
 #include "modules/decoder.hpp"
 
-#include <stack>
 #include <cctype>
+#include <cstddef>
+#include <string>
 
-std::string decodeString(const std::string& s) {
-    std::stack<int> counts;
-    std::stack<std::string> resultStack;
-    std::string current;
-    int k = 0;
+std::string decodeHelper(const std::string &s, int &i) {
+    // i - текущая позиция в строке s
+	std::string result;
+	int k = 0;
 
-    for (char ch : s) {
-        if (std::isdigit(ch)) {
-            k = k * 10 + (ch - '0');
-        } else if (ch == '[') {
-            counts.push(k);
-            resultStack.push(current);
-            current.clear();
-            k = 0;
-        } else if (ch == ']') {
-            std::string temp = current;
-            current = resultStack.top();
-            resultStack.pop();
-            int repeat = counts.top();
-            counts.pop();
-            while (repeat--) {
-                current += temp;
+	while (static_cast<size_t>(i) < s.size()) {
+		char ch = s[i];
+
+		if (std::isdigit(ch)) {
+			// накапливаем число
+			k = k * 10 + (ch - '0');
+			++i;
+		} else if (ch == '[') {
+			// рекурсивный вызов для содержимого скобок
+			++i;
+			std::string inner = decodeHelper(s, i);
+			// повторяем inner k раз
+            for (; k > 0; --k) {
+				result += inner;
             }
-        } else {
-            current += ch;
-        }
-    }
+			k = 0; // сбрасываем после использования
+		} else if (ch == ']') {
+			// конец текущего рекурсивного блока
+			++i;
+			return result;
+		} else {
+			// обычный символ
+			result += ch;
+			++i;
+		}
+	}
 
-    return current;
+	return result;
+}
+
+std::string decodeString(const std::string &s) {
+	int i = 0;
+	return decodeHelper(s, i);
 }
